@@ -34,7 +34,7 @@ The files in this repository are useful for creating an arbitrary number of EC2 
         cluster_name
 
 0. Make sure there's data in your S3 bucket /input directory!
-    - The connector will fail without at least one csv file in here.
+    - The connector will fail without at least one sample input file file in here.
     - The connector auto-creates a schema at startup, so it needs data to read.
     - The `create_many_sample_csv.py` script and `shorter_urls.txt` file are
     included to create sample data - 100 csv files by default.
