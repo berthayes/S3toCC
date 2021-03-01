@@ -1,18 +1,14 @@
 # S3toCC
- Deploying Connect Nodes for Confluent Cloud in AWS using Python, Ansible, and Docker.  Read .csv or .json files from an S3 bucket into Confluent Cloud
-
- This repository is useful for spinning up an arbitrary number of EC2 hosts running Kafka Connect.  Each host runs [S3FS](https://github.com/s3fs-fuse/s3fs-fuse) which allows the host to mount an S3 bucket as a directory, e.g. 
+ Deploying Kafka Connect Nodes for Confluent Cloud in AWS using Python, Ansible, and Docker.  Read .csv or .json files from an S3 bucket into Confluent Cloud.   Each host runs [S3FS](https://github.com/s3fs-fuse/s3fs-fuse) which allows the host to mount an S3 bucket as a directory, e.g. 
  ```
  s3fs your-s3-bucket /var/spooldir/
  ```
 This command will mount your S3 bucket to the /var/spooldir directory on the local filesystem.
 
  The host runs Kafka Connect as a Docker container with the S3 mounted directory, `/var/spooldir`
-mounted as a volume within Docker.  Kafka Connect runs the [Spooldir](https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir) connector, which reads a variety of delimted filess from a local directory into Apache Kafka.
+mounted as a volume within Docker.  Kafka Connect runs the [Spooldir](https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir) connector, which reads a variety of delimited files from a local directory into Apache Kafka.
 
 The result of this little hack is that multiple Connect nodes can run Spooldir and read delimited files directly from an S3 bucket.  `W00t!`
-
-The files in this repository are useful for creating an arbitrary number of EC2 hosts and configuring them with S3FS and Spooldir.  The ingested files are sent to Confluent Cloud.
 
 0. In your Confluent Cloud console, go to 
     - Tools & client config -> Kafka Connect
@@ -88,7 +84,7 @@ The files in this repository are useful for creating an arbitrary number of EC2 
 0. Create the target topic in Confluent Cloud if you haven't done so already.
 
     ```
-    ./start_spooldir.sh
+    ./start_json_spooldir.sh
     ```
 
     - The connector configuration and status are stored in topics in Kafka.
