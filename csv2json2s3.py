@@ -9,6 +9,12 @@ import time
 import boto3
 import logging
 from botocore.exceptions import ClientError
+from configparser import ConfigParser
+
+cfg = ConfigParser()
+cfg.read('yak_shaving.conf')
+
+bucket_name = cfg.get('s3', 'bucket_name')
 
 csv_file = '10_fake_names.csv'
 #csv_file = 'fake_names.csv'
@@ -96,11 +102,12 @@ with open(csv_file, 'r', encoding='utf-8-sig') as f:
         # print(json.dumps(user_info))
         filename = row.GivenName + "." + row.Surname + "." + str(time.time()) + ".json"
         jsonFilePath = "./json_files/" + filename
+        # TODO: make the directory path come from a config file
         with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
             jsonf.write(json.dumps(user_info, indent=4))
 
         # TODO: make these S3 parameters come from a conf file
-        if upload_file(jsonFilePath, 'bhayes-chuckbucket', 'json_files/{}'.format(filename)):
+        if upload_file(jsonFilePath, bucket_name, 'json_files/{}'.format(filename)):
             print("File is uploaded")
         else:
             print("problem")
