@@ -32,6 +32,8 @@ The result of this little hack is that multiple Connect nodes can run Spooldir a
     - `your_pem`
     - `your_email`
     - `cluster_name`
+    - `groupid`
+    - `bucket_name`
 
 0. Make sure there's data in your S3 bucket /input directory!
     - The connector will fail without at least one sample input file in there.
@@ -62,7 +64,7 @@ The result of this little hack is that multiple Connect nodes can run Spooldir a
 
     https://github.com/s3fs-fuse/s3fs-fuse#examples
 
-0. Edit the `all.yml` playbook and replace `your-s3bucket` with an actual S3 bucket on line 28
+0. Edit the `all.yml` playbook and replace `${{your-s3bucket}}` with an actual S3 bucket on line 28
 
 0. Run Ansible playbook `all.yml` on all nodes
     ```
