@@ -1,7 +1,7 @@
 # S3toCC
  Deploying Kafka Connect Nodes as EC2 instances for Confluent Cloud using Python, Ansible, and Docker.  
  
- Read .csv or .json files from an S3 bucket into Confluent Cloud.   
+ Read .csv or .json files from an S3 bucket into Confluent Cloud using the [Spooldir Connector](https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir)   
 
  - [The Trick](https://github.com/berthayes/S3toCC/#The-Trick)
  - [Configuring Your Environment](https://github.com/berthayes/S3toCC/#Configuring-your-environment)
@@ -136,7 +136,7 @@ If this is the first time running these steps, you will see new topics
         - Replace values for `SCHEMAURL` and `SCHEMACREDS` with appropriate values from the connect.properties file.
         - Save/copy this file as `csv_spooldir_config.json`
         - Start the connector with a script
-        
+
         ```
         ./start_csv_spooldir.sh
         ```
