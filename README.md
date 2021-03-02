@@ -129,12 +129,14 @@ If this is the first time running these steps, you will see new topics
     - Option 1: Manual
         - You know what you're doing.
         - Edit the `csv_spooldir_config_template.json` file
+
         ```
         vim csv_spooldir_config_template.json
         ```
-        - Replace values for `SCHEMAURL` and `SCHEMACREDS` with appropriate values from connect.properties files.
+        - Replace values for `SCHEMAURL` and `SCHEMACREDS` with appropriate values from the connect.properties file.
         - Save/copy this file as `csv_spooldir_config.json`
         - Start the connector with a script
+        
         ```
         ./start_csv_spooldir.sh
         ```
