@@ -1,0 +1,26 @@
+{
+  "name": "url-clickstream",
+  "config": {
+    "value.converter.schema.registry.url": "SCHEMAURL",
+    "key.converter.schema.registry.url": "SCHEMAURL",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "SCHEMACREDS",
+    "name": "url-clickstream",
+    "connector.class": "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirCsvSourceConnector",
+    "tasks.max": "3",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "transforms": "ValueToKey,ExtractKey",
+    "transforms.ValueToKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+    "transforms.ValueToKey.fields": "timestamp",
+    "transforms.ExtractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+    "transforms.ExtractKey.field": "timestamp",
+    "topic": "url-clickstream",
+    "input.path": "/var/spooldir/input",
+    "finished.path": "/var/spooldir/output",
+    "error.path": "/var/spooldir/errors",
+    "input.file.pattern": ".*\\.csv$",
+    "schema.generation.enabled": "true",
+    "csv.first.row.as.header": "true"
+  }
+}
