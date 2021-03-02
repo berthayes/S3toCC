@@ -7,6 +7,7 @@
  - [Configuring Your Environment](https://github.com/berthayes/S3toCC/#Configuring-your-environment)
  - [Creating Connect Hosts](https://github.com/berthayes/S3toCC/#Creating-Connect-Hosts)
  - [Consume schema-less JSON with Spooldir](https://github.com/berthayes/S3toCC/#Consume-schema-less-JSON-with-Spooldir)
+ - [Consume CSV data with schema and Confluent Cloud Schema Registry](https://github.com/berthayes/S3toCC#consume-csv-data-with-schema-and-confluent-cloud-schema-registry)
  
  ## The Trick
  Each host runs [S3FS](https://github.com/s3fs-fuse/s3fs-fuse) which allows the host to mount an S3 bucket as a directory, e.g. 
